@@ -1,4 +1,4 @@
-/*let pokemonRespository = (function() {*/
+let pokemonRespository = (function() {
 
 let pokemonList = [
 {name: "Espurr", height: "1", type: "psychic"},
@@ -8,7 +8,7 @@ let pokemonList = [
 {name: "Sceptile", height: "6", type: "grass"},
 {name: "Milotic", height: "20", type: "water"}
 ]
-/*
+
 function getAll() {
     return pokemonList;
 }
@@ -20,12 +20,13 @@ function add (pokemon){
 return {
     getAll: getAll,
     add: add
-}
+};
+})();
 
-})()
+pokemonRespository.getAll().forEach(function (pokemon) {
+    document.write(pokemon.name + ' is ' + pokemon.height + ' feet tall and is a ' + pokemon.type + ' type. ');
+});
 
-console.log(pokemonRespository.getAll());
-*/
 
 /*for (let i=0; i < pokemonList.length; i++){
   if (pokemonList[i].height > 0 && pokemonList[i].height <= 5){
@@ -36,7 +37,8 @@ console.log(pokemonRespository.getAll());
 }*/
 
 
-function myLoopFunction(pokemon) {
+/*function myLoopFunction(pokemon) {
     document.write(pokemon.name + ' is ' + pokemon.height + ' feet tall and is a ' + pokemon.type + ' type. ');
 }
-pokemonList.forEach(myLoopFunction);
+pokemonList.forEach(myLoopFunction);*/
+

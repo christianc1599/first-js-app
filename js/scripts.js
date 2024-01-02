@@ -23,10 +23,33 @@ return {
 };
 })();
 
-pokemonRespository.getAll().forEach(function (pokemon) {
-    document.write(pokemon.name + ' is ' + pokemon.height + ' feet tall and is a ' + pokemon.type + ' type. ');
-});
+function makePokedex(){
+    var container = document.querySelector('.poke-list');
+  
+  pokemonRespository.getAll().forEach(function (pokemon) {
+  
+      let listItem = document.createElement('li');
+  
+      let button = document.createElement('button');
+      button.innerText = pokemon.name;
+      button.classList.add('button-class');
+  
+      button.addEventListener('click', function () {
+        showDetails(pokemon);
+      });
+      function showDetails(pokemon){
+        console.log(pokemon);
+      }
 
+      listItem.appendChild(button);
+      container.appendChild(listItem);
+
+  });
+  }
+  makePokedex();
+
+
+//document.write(pokemon.name + ' is ' + pokemon.height + ' feet tall and is a ' + pokemon.type + ' type. ');
 
 /*for (let i=0; i < pokemonList.length; i++){
   if (pokemonList[i].height > 0 && pokemonList[i].height <= 5){

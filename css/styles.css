@@ -1,0 +1,41 @@
+body {
+  background-color: lightcyan;
+}
+
+button {
+    border: none;
+    background-color: lightgreen;
+    font-size: 16px;
+    color: white;
+    padding: 10px;
+    border-radius: 12px;
+    display: inline-block;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+
+  }
+  button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+  h1 {
+    font-size: 40px;
+    font-family: 'Verdana', monospace;
+    text-decoration: underline;
+  }
+  .voltorb {
+    padding: 10px;
+    margin: auto;
+    display: block;
+    width: 30%;
+  }
+  .poke-list li{
+    color: lightcyan;
+    display: inline-block;
+    margin-left: 15px;
+  }
+  .logo {
+    margin: auto;
+    padding: 10px;
+    display: block;
+    width: 30%;
+  }

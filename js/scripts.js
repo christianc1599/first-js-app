@@ -1,4 +1,4 @@
-let pokemonRespository = (function() {
+let pokemonRepository = (function() {
 
 let pokemonList = [
 {name: "Espurr", height: "1", type: "psychic"},
@@ -26,7 +26,7 @@ return {
 function makePokedex(){
     var container = document.querySelector('.poke-list');
   
-  pokemonRespository.getAll().forEach(function (pokemon) {
+  pokemonRepository.getAll().forEach(function (pokemon) {
   
       let listItem = document.createElement('li');
   

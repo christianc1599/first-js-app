@@ -49,19 +49,4 @@ function makePokedex(){
   makePokedex();
 
 
-//document.write(pokemon.name + ' is ' + pokemon.height + ' feet tall and is a ' + pokemon.type + ' type. ');
-
-/*for (let i=0; i < pokemonList.length; i++){
-  if (pokemonList[i].height > 0 && pokemonList[i].height <= 5){
-      document.write(pokemonList[i].name + " Height= " + pokemonList[i].height + " feet tall, thats pretty small!" + " ");
-  } else if (pokemonList[i].height > 5) {
-    document.write(pokemonList[i].name + " Height= " + pokemonList[i].height + " feet tall, thats quite large!" + " ");
-  }
-}*/
-
-
-/*function myLoopFunction(pokemon) {
-    document.write(pokemon.name + ' is ' + pokemon.height + ' feet tall and is a ' + pokemon.type + ' type. ');
-}
-pokemonList.forEach(myLoopFunction);*/
 

@@ -1,13 +1,8 @@
 let pokemonRepository = (function() {
 
-let pokemonList = [
-{name: "Espurr", height: "1", type: "psychic"},
-{name: "Mismagius", height: "3", type: "ghost"},
-{name: "Delphox", height: "5", type: "fire"},
-{name: "Shuppet", height: "2", type: "ghost"},
-{name: "Sceptile", height: "6", type: "grass"},
-{name: "Milotic", height: "20", type: "water"}
-]
+let pokemonList = []
+let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
+
 
 function getAll() {
     return pokemonList;
@@ -17,15 +12,52 @@ function add (pokemon){
     return pokemonList.push(pokemon);
 }
 
+function loadList() {
+  return fetch(apiUrl).then(function(response) {
+    return response.json()
+  }).then (function (json) {
+    json.results.forEach(function (item) {
+      let pokemon = {
+        name: item.name,
+        detailsUrl: item.url
+      };
+      add(pokemon);
+    });
+  }).catch (function (e) {
+    console.error(e);
+  })
+}
+
+function loadDetails(item) {
+  let url = item.detailsUrl;
+  return fetch(url).then(function (response){
+    return response.json();
+  }).then(function (details){
+      item.imageUrl = details.sprites.front_default;
+      item.height = details.height;
+      item.types = details.types;
+  }).catch(function(e) {
+    console.error(e)
+  });
+}
+
+function showDetails(pokemon){
+  loadDetails(pokemon).then(function() {
+    console.log(pokemon);
+  })
+}
+
 return {
     getAll: getAll,
-    add: add
+    add: add,
+    loadList: loadList,
+    loadDetails: loadDetails
 };
 })();
 
 function makePokedex(){
     var container = document.querySelector('.poke-list');
-  
+  pokemonRepository.loadList().then (function() {
   pokemonRepository.getAll().forEach(function (pokemon) {
   
       let listItem = document.createElement('li');
@@ -45,7 +77,8 @@ function makePokedex(){
       container.appendChild(listItem);
 
   });
-  }
+ });
+}
   makePokedex();
 
 

@@ -21,7 +21,8 @@ function showModal(title, height, types, img) {
   heightElement.innerText = 'Height: ' + height;
 
   let typeElement = document.createElement('p');
-  typeElement.innerText = 'Type: ' + types
+  types = types.map(type => type.type.name)
+  typeElement.innerText = 'Type: ' + types.join(', ')
 
   let imageElement = document.createElement("img");
   imageElement.setAttribute("src", img);
@@ -109,8 +110,8 @@ function loadDetails(item) {
 }
 
 function showDetails(pokemon) {
-  loadDetails(pokemon).then(function() {
-    showModal(pokemon.name, pokemon.height, pokemon.types, pokemon.imageUrl);
+  pokemonRepository.loadDetails(pokemon).then(function() {
+    pokemonRepository.showModal(pokemon.name, pokemon.height, pokemon.types, pokemon.imageUrl);
   })
 }
 
@@ -119,8 +120,10 @@ return {
     add: add,
     loadList: loadList,
     loadDetails: loadDetails,
-    showDetails: showDetails
+    showDetails: showDetails,
+    showModal: showModal
 };
+
 })();
 
 pokemonRepository.getAll().forEach(function(pokemon) {
@@ -142,8 +145,8 @@ function makePokedex(){
         showDetails(pokemon);
       });
       function showDetails(pokemon){
-        loadDetails(pokemon).then(function(){
-          showModal(pokemon.name, pokemon.height, pokemon.types, pokemon.imageUrl);
+        pokemonRepository.loadDetails(pokemon).then(function(){
+          pokemonRepository.showModal(pokemon.name, pokemon.height, pokemon.types, pokemon.imageUrl);
         })
       }
 
@@ -154,5 +157,4 @@ function makePokedex(){
  });
 }
   makePokedex();
-
 

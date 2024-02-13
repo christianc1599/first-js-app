@@ -11,8 +11,8 @@ let pokemonRepository = (function () {
   }
 
   function showDetails(pokemon) {
-    loadDetails(pokemon).then(function () {
-      showModal(pokemon.name, pokemon.height, pokemon.imageUrl);
+    loadDetails(pokemon).then(function (detailedPokemon) {
+      showModal(detailedPokemon);
     });
   }
 
@@ -27,12 +27,49 @@ let pokemonRepository = (function () {
       hideModal();
     }
   });
+  function loadDetails(item) {
+    let url = item.detailsUrl;
 
-  function showModal(title, text) {
-    const name = document.querySelector("#titleModal");
-    const height = document.querySelector(".modal-body");
-    name.innerHTML = title;
-    height.innerHTML = `Height: ${text}`;
+    return fetch(url)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (details) {
+        // console.log(details);
+        // Now we add the details to the item
+        item.imageUrl = details.sprites.front_default;
+        item.height = details.height;
+        item.types = details.types;
+
+        return item;
+      })
+      .catch(function (e) {
+        console.error(e);
+        throw e;
+      });
+  }
+  function showModal(item) {
+    let modalBody=$(".modal-body")
+    let modalTitle=$(".modal-title")
+    let modalHeader=$(".modal-header")
+
+    modalHeader.empty();
+    modalTitle.empty();
+    modalBody.empty();
+
+    let nameElement=$("<h1>" + item.name + "</h1>");
+    let imageElement=$('<img class="modal-img" style="width:50%">');
+    imageElement.attr("src", item.imageUrl);
+    imageElement.attr("alt", item.name + " Image")
+    let heightElement=$("<p>" + "height: " + item.height + "</p>");
+    let typesString = item.types.map(type => type.type.name).join(', ');
+    let typesElement = $("<p>" + "type: " + typesString + "</p>");
+
+    modalTitle.append(nameElement);
+    modalBody.append(imageElement);
+    modalBody.append(heightElement);
+    modalBody.append(typesElement);
+
   }
 
   function addListItem(pokemon) {
@@ -69,25 +106,6 @@ let pokemonRepository = (function () {
 
           add(pokemon);
         });
-      })
-      .catch(function (e) {
-        console.error(e);
-      });
-  }
-
-  function loadDetails(item) {
-    let url = item.detailsUrl;
-
-    return fetch(url)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (details) {
-        // console.log(details);
-        // Now we add the details to the item
-        item.imageUrl = details.sprites.front_default;
-        item.height = details.height;
-        item.types = details.types;
       })
       .catch(function (e) {
         console.error(e);

@@ -24,33 +24,10 @@ display: none;
 }
 
 .modal {
-  margin: auto;
-  display: inline-block;
-  box-sizing: border-box;
   background: rgb(236, 226, 170);
-  padding: 15px;
-  width: 100%;
-  max-width: 700px;
-  text-align: left;
 }
 
-.modal-close {
-  float: right;
-  border: 0;
-  background: none;
-  color: #777;
-  text-decoration: underline;
-}
-
-.modal h1 {
-  margin-top: 0;
-}
-
-.modal p {
-  margin-bottom: 0;
-}
-
-button {
+.btn-primary {
     border: none;
     background-color: rgb(255, 255, 255, 0.4);
     font-family: 'Exo 2', sans-serif;
@@ -62,7 +39,7 @@ button {
     display: inline-block;
     border-bottom: 2px solid rgba(0, 0, 0, 0.3); 
   }
-  button:hover {
+  .btn-primary:hover {
     cursor: pointer;
     opacity: 0.8;
   }
@@ -80,7 +57,7 @@ button {
     display: block;
     width: 30%;
   }
-  .poke-list li{
+  .pokemon-list li{
     display: inline-block;
     margin-left: 15px;
 

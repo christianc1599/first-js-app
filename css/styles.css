@@ -4,6 +4,17 @@ body {
   background-image: linear-gradient(rgb(76, 82, 163), rgb(248, 251, 24));
 }
 
+.list-group-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.navbar-brand {
+  font-family: 'Exo 2', sans-serif;
+}
+
 #modal-container {
 display: none;
 }
@@ -58,8 +69,9 @@ display: none;
     width: 30%;
   }
   .pokemon-list li{
-    display: inline-block;
-    margin-left: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
 
   }
   .logo {

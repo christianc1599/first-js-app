@@ -68,9 +68,9 @@ display: none;
     display: block;
     width: 30%;
   }
-  .pokemon-list li{
+  .pokemon-list{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
 
   }

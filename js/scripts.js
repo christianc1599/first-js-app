@@ -49,27 +49,26 @@ let pokemonRepository = (function () {
       });
   }
   function showModal(item) {
-    let modalBody=$(".modal-body")
-    let modalTitle=$(".modal-title")
-    let modalHeader=$(".modal-header")
+    let modalBody = $(".modal-body");
+    let modalTitle = $(".modal-title");
+    let modalHeader = $(".modal-header");
 
     modalHeader.empty();
     modalTitle.empty();
     modalBody.empty();
 
-    let nameElement=$("<h1>" + item.name + "</h1>");
-    let imageElement=$('<img class="modal-img" style="width:50%">');
+    let nameElement = $("<h1>" + item.name + "</h1>");
+    let imageElement = $('<img class="modal-img" style="width:50%">');
     imageElement.attr("src", item.imageUrl);
-    imageElement.attr("alt", item.name + " Image")
-    let heightElement=$("<p>" + "height: " + item.height + "</p>");
-    let typesString = item.types.map(type => type.type.name).join(', ');
+    imageElement.attr("alt", item.name + " Image");
+    let heightElement = $("<p>" + "height: " + item.height + "</p>");
+    let typesString = item.types.map((type) => type.type.name).join(", ");
     let typesElement = $("<p>" + "type: " + typesString + "</p>");
 
     modalTitle.append(nameElement);
     modalBody.append(imageElement);
     modalBody.append(heightElement);
     modalBody.append(typesElement);
-
   }
 
   function addListItem(pokemon) {
